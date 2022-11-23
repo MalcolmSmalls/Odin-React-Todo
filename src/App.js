@@ -5,7 +5,7 @@ import { nanoid } from "nanoid"
 export default function App () {
 
   const [ tasks, setTasks ] = React.useState( () => ({task: "", id: ""}))
-  const [ taskList, setTaskList ] = React.useState ([ ])
+  const [ taskList, setTaskList ] = React.useState ([])
 
   function handleChange (event) {
       setTasks( prevTasks => {
@@ -17,11 +17,20 @@ export default function App () {
       setTaskList(prevTaskList => {
           return [...prevTaskList, tasks]
       })
+  
 
   }
 
+// const taskListCreator = taskList.map(task => <li key={task.id} id={task.id}>{task.task}</li>)
+
+  const taskListCreator = taskList.map(task => {
+    return (
+      <li key={task.id} id={task.id}>{task.task}</li>
+    ) 
+  })
   return (
     <main>
+      {taskListCreator}
       <Overview handleClick = {handleClick} handleChange = {handleChange} val = {tasks.task} />
     </main>
 
