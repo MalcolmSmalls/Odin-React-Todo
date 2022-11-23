@@ -13,13 +13,22 @@ export default function App () {
       })
   }
 
-  function handleClick () {
-      setTaskList(prevTaskList => {
-          return [...prevTaskList, tasks]
-      })
   
+  function handleSubmit(event){
+    event.preventDefault()
+    setTaskList(prevTaskList => {
+      return [...prevTaskList, tasks]
+  })
 
   }
+
+  // function handleClick () {
+  //     setTaskList(prevTaskList => {
+  //         return [...prevTaskList, tasks]
+  //     })
+  
+
+  // }
 
 // const taskListCreator = taskList.map(task => <li key={task.id} id={task.id}>{task.task}</li>)
 
@@ -31,7 +40,7 @@ export default function App () {
   return (
     <main>
       {taskListCreator}
-      <Overview handleClick = {handleClick} handleChange = {handleChange} val = {tasks.task} />
+      <Overview handleSubmit = {handleSubmit} handleChange = {handleChange} val = {tasks.task} />
     </main>
 
     
