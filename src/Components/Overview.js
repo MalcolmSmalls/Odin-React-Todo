@@ -1,22 +1,27 @@
-import React, { Component } from "react"
+import { nanoid } from "nanoid"
+import React from "react"
 
-class Overview extends Component {
-    constructor(props){
-        super(props)
+export default function Overview (props) {
+    const [ tasks, setTasks ] = React.useState( () => ({task: "", id: ""}))
+    console.log(tasks)
+
+
+    function handleChange (event) {
+        setTasks( prevTasks => {
+            return {...prevTasks, [event.target.name]: event.target.value, id: nanoid()}
+        })
     }
 
-    render(){
-        return(
-            <div>
-                {/* <ul>
-                    <li></li>
-                </ul>
-                <input onChange = {this.props.addTodo} value = {this.props.item}></input>
-                <button>Click</button> */}
-            </div>
-        )
-    }
+    return (
+        <div className = "submit-container">
+            <input 
+                type = "text" 
+                name = "task"
+                onChange = {handleChange}
+                value = {tasks.task}
+            />
+        </div>
+    )
+
 
 }
-
-export default Overview
