@@ -19,6 +19,7 @@ export default function App () {
     setTaskList(prevTaskList => {
       return [...prevTaskList, tasks]
   })
+    setTasks( () => ({task: "", id: ""}) )
 
   }
 
