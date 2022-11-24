@@ -33,9 +33,9 @@ export default function App () {
 
 // const taskListCreator = taskList.map(task => <li key={task.id} id={task.id}>{task.task}</li>)
 
-  const taskListCreator = taskList.map(task => {
+  const taskListCreator = taskList.map((task, index) => {
     return (
-      <li key={task.id} id={task.id}>{task.task}</li>
+      <li key={task.id} id={task.id}>{index+1}. {task.task}</li>
     ) 
   })
   return (
