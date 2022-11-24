@@ -23,6 +23,18 @@ export default function App () {
 
   }
 
+  function handleDelete (event, key) {
+    setTaskList(prevTaskList => {
+      let newArr = []
+      prevTaskList.map(note =>{ 
+        if(key !== note.id){
+          newArr.push(note)
+        }
+      })
+      return newArr
+    })
+  }
+
   // function handleClick () {
   //     setTaskList(prevTaskList => {
   //         return [...prevTaskList, tasks]
@@ -35,7 +47,7 @@ export default function App () {
 
   const taskListCreator = taskList.map((task, index) => {
     return (
-      <li key={task.id} id={task.id}>{index+1}. {task.task}</li>
+      <li key={task.id} id={task.id}>{index+1}. {task.task} <span onClick = {(event)=>handleDelete(event, task.id)}>DELETE</span></li>
     ) 
   })
   return (
