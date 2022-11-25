@@ -8,14 +8,14 @@ export default function Overview (props) {
 
     return (
         <div className = "submit-container">
-            <form onSubmit ={props.handleSubmit}>
+            <form onSubmit ={props.editMode.on ? props.handleResubmit : props.handleSubmit}>
                 <input 
                     type = "text" 
                     name = "task"
                     onChange = {props.handleChange}
                     value = {props.val}
                 />
-                <button>Submit Task
+                <button>{props.editMode.on ? "Resubmit Task" : "Submit Task"}
                 </button>
             </form>
 
