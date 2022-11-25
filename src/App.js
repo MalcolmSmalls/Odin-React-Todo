@@ -40,7 +40,7 @@ export default function App () {
 
 
   function handleEdit (event, key) {
-      taskList.map ( note => {
+      taskList.forEach ( note => {
         if(note.id === key){
           console.log(note)
           setTasks(note)
@@ -53,9 +53,6 @@ export default function App () {
 
   function handleResubmit(event){
     event.preventDefault()
-    // console.log(editMode)
-    // console.log(tasks)
-    // console.log(taskList)
     setTaskList(prevTaskList => {
       let newArr = []
       prevTaskList.forEach( note => {
